@@ -1,2 +1,15 @@
-<h1>Books#new</h1>
-<p>Find me in app/views/books/new.html.erb</p>
+<form action='/books' method='post'>
+<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	<label>Book Title <input type="text" name="book[title]"></label><br><br>
+	<label>Author <input type="text" name="book[author]"></label><br><br>
+	<label>Category <input type="text" name="book[category]"></label><br><br>
+	
+	<input type="hidden" name="user_id" value="<%=session[:user_id]%>">
+	
+
+	<input type="submit" name="book[shelf]" value="Already read">
+
+	<input type="submit" name="book[shelf]" value="Currently reading">
+
+	<input type="submit" name="book[shelf]" value="Interested in reading">
+</form>
