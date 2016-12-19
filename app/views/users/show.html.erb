@@ -6,7 +6,7 @@
 <p><a href="/books">Add a Book</a></p>
 
 
-<h3> Books You've Read</h3>
+<h3 id="read"> Books You've Read</h3>
 	<ul>
 		<% if current_user.reads %>
 			<% for current_user.reads.each do |read| %>

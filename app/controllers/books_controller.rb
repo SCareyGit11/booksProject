@@ -3,6 +3,7 @@ class BooksController < ApplicationController
   end
 
   def show
+  	Book.find(params[:id])
   end
 
   def index
