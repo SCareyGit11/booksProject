@@ -35,6 +35,8 @@ Rails.application.routes.draw do
 
   get 'books' => 'books#index'
 
+  post 'books' => 'books#create'
+
   get 'users/index'
 
   get 'users/new'
