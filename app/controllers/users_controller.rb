@@ -12,5 +12,15 @@ class UsersController < ApplicationController
   end
 
   def create
+    
+    @user = User.create(first_name: params[:user][:first_name], last_name: params[:user][:last_name], email: params[:user][:email], password: params[:user][:password])
+    session[:name] = @user.first_name
+    session[:user_id] = @user.id
+      if @user.valid?
+        flash[:success] = "You are registered.You can log in"
+      else
+        flash[:errors] = @user.errors.full_messages
+      end 
+    redirect_to '/users/new'
   end
 end
