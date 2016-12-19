@@ -27,11 +27,13 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
 
+  post 'sessions' => 'sessions#create'
+
   get 'books/new'
 
   get 'books/show'
 
-  get 'books/index'
+  get 'books' => 'books#index'
 
   get 'users/index'
 
@@ -41,7 +43,7 @@ Rails.application.routes.draw do
 
   get 'users/edit'
 
-  get 'users/create'
+  post 'users' => 'users#create'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

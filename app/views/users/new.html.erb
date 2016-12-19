@@ -1,2 +1,32 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h2>Register</h2>
+
+<form action='/users' method='post'>
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	<label>First Name <input type="text" name="user[first_name]"></label><br><br>
+	<label>Last Name <input type="text" name="user[last_name]"></label><br><br>
+	<label>Email <input type="text" name="user[email]"></label><br><br>
+	
+	
+	<label>Password <input type="password" name="user[password]"></label><br><br>
+	
+
+	<input type="submit" value="Register">
+</form>
+
+<% if flash[:success] %>
+	<p><%=flash[:success]%></p>
+<%end%>
+<br><br>
+
+<h2>Log In</h2>
+<form action='/sessions' method='post'>
+<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	<label>Email <input type="text" name="email"></label><br><br>
+	<label>Password <input type="password" name="password"></label><br><br>
+	<input type="submit" value="Log In">
+</form>
+
+
+<%if flash[:errors]%>
+	<p><%=flash[:errors]%></p> 
+<% end %>
