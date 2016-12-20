@@ -26,12 +26,18 @@
 			<td> <a href="/users/<%=book.user_id%>"><%=book.user.first_name%></a> </td>
 			<td>number for now</td>
 			<td>
+
+			<% unless Read.where(book_id: book.id, user_id: current_user.id).any? %>
 			<form action='/reads' method='post'>
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 				<input type="hidden" name="book_id" value="<%=book.id%>">
 				
 				<input type="submit" value="Already Read">
 			</form>
+
+			<%end%>
+
+			<% unless Current.where(book_id: book.id, user_id: current_user.id).any? %>
 
 			<form action='/currents' method='post'>
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
@@ -40,12 +46,18 @@
 				<input type="submit" value="Currently Reading">
 			</form>
 
+			<%end%>
+
+			<% unless Interested.where(book_id: book.id, user_id: current_user.id).any? %>
+
 			<form action='/interesteds' method='post'>
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 				<input type="hidden" name="book_id" value="<%=book.id%>">
 				
 				<input type="submit" value="Interested in Reading">
 			</form>
+			<%end%>
+
 			</td>
 
 		</tr>

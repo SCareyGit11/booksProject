@@ -10,5 +10,15 @@ class InterestedsController < ApplicationController
 
   def create
   	interested = Interested.create(user: current_user, book_id:params[:book_id])
+  	read = Read.where(user_id: current_user.id, book_id:params[:book_id])[0]
+  	if read
+  		read.destroy
+  	end
+
+    current = Current.where(user_id: current_user.id, book_id:params[:book_id])[0].destroy
+    if current
+    	current.destroy
+    end
+    redirect_to '/books'
   end
 end
