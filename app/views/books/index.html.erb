@@ -8,4 +8,37 @@
  <p>Here are the list of all the books</p>
 
 
+
+<table>
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Author</th>
+			<th>No. of times book <br> has been added</th>
+			<th>Add to Shelf</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr <%@books.each do |book|%>>
+			<td> <a href=""><%=book.title%></a> </td>
+			<td> <a href="/books/<%=book.id%>"><%=book.author%></a> </td>
+			<td>number for now</td>
+			<td><form action='/currents' method='post'>
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+			<input type="hidden" name="book_id" value="<%=book.id%>">
+			<input type="hidden" name="user_id" value="<%=session[:id]%>">
+			<input type="submit" name="book[shelf]" value="Already read">
+
+	<input type="submit" name="book[shelf]" value="Currently reading">
+
+	<input type="submit" name="book[shelf]" value="Interested in reading">
+				
+			</form></td>
+		</tr>
+		<%end%>
+	</tbody>
+</table>
+
+
+
  <p><a href="/books/new">Create a new book in the database</a></p>

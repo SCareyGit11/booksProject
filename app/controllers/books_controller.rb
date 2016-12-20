@@ -7,6 +7,8 @@ class BooksController < ApplicationController
   end
 
   def index
+  	@books = Book.all
+  	render 'index'
   end
 
   def create
@@ -23,6 +25,7 @@ class BooksController < ApplicationController
   	@current = Current.create(user_id: session[:user_id],book_id: @book.id)
     end
 
+    redirect_to '/books'
 
   end
 
