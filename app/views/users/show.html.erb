@@ -1,28 +1,78 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
 
-<h1>Hello, <%=current_user.first_name%></h1>
+<h1>Hello, <%=@user.first_name%></h1>
 
 <p><a href="/books">Add a Book</a></p>
 
 
-<h3 id="read"> Books You've Read</h3>
-	<ul>
-		<% if current_user.reads %>
-			<% for current_user.reads.each do |read| %>
-				<li><a href="/books/<%=read.id%>"><%=read.title%></a></li>
-				<li><%=read.author%></li>
-			<% end %>
-		<% end %>
-	</ul>
+<h3 id="read"> Books Read by <%=@user.first_name%></h3>
+<table>
+	<thead>
+		<th>Title</th><th>Author</th>
+	<thead>
+	<tbody>
+		<%if @user.books_read %>
+		<% @user.books_read.each do |book| %>
+			<tr>
+				<td><a href="/books/<%=book.id%>"><%=book.title %></a></td>
+				<td><%=book.author %></td>
+			</tr>
+		<%end%>
+		<%end%>
+	</tbody>
+</thead>
 
 
-<h3> Books You'd Like to Read </h3>
+<h3 id="interested"> Books <%=@user.first_name%> would Like to Read </h3>
+<table>
+	<thead>
+		<th>Title</th><th>Author</th>
+	<thead>
+	<tbody>
+		<%if @user.books_interested %>
+		<% @user.books_interested.each do |book| %>
+			<tr>
+				<td><a href="/books/<%=book.id%>"><%=book.title %></a></td>
+				<td><%=book.author %></td>
+			</tr>
+		<%end%>
+		<%end%>
+	</tbody>
+</thead>
+<h3 id="current"> Books <%=@user.first_name%> is currently Reading </h3>
+<table>
+	<thead>
+		<th>Title</th><th>Author</th>
+	<thead>
+	<tbody>
+		<%if @user.books_interested %>
+		<% @user.books_interested.each do |book| %>
+			<tr>
+				<td><a href="/books/<%=book.id%>"><%=book.title %></a></td>
+				<td><%=book.author %></td>
+			</tr>
+		<%end%>
+		<%end%>
+	</tbody>
+</thead>
 
-<h3> Books You're currently Reading </h3>
-
-<h3> Books You've Reviewed </h3>
-
+<h3 id="comments"> Books Reviewed by <%=@user.first_name%></h3>
+<table>
+	<thead>
+		<th>Title</th><th>Author</th>
+	<thead>
+	<tbody>
+		<%if @user.books_interested %>
+		<% @user.books_interested.each do |book| %>
+			<tr>
+				<td><a href="/books/<%=book.id%>"><%=book.title %></a></td>
+				<td><%=book.author %></td>
+			</tr>
+		<%end%>
+		<%end%>
+	</tbody>
+</thead>
 <a href="/users/<%=current_user.id%>">Edit your Profile</a>
 
 <a href="/">Log Out</a>
