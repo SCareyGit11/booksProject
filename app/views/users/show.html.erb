@@ -1,8 +1,4 @@
-<form action='/sessions/<%=session[:user_id]%>' method='post'>
-<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-<input type="hidden" name="_method" value="delete">
-    <input type="submit" value="Log Out">
-</form>
+
 
 
 <h1><%=@user.first_name%></h1>
@@ -58,7 +54,7 @@
 
 				<!--Finished Book Button (For current_user's profile page only) Deletes book from current and adds to already read-->
 				<td><%if @user == current_user %>
-				<form action="/currents/<%=book.currents.first.id%>" method="post">
+				<form action="/currents/<%=@user.currents.where(book:book)[0].id%>" method="post">
 					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
 					<input type="hidden" name="_method" value="delete">
 					<input type="hidden" name="book_id" value="<%=book.id%>">
@@ -91,6 +87,6 @@
 </table>
 <a href="/users/<%=current_user.id%>">Edit your Profile</a>
 
-<a href="/users/new">Log Out</a>
+
 
 <a href="/books">Books Dashboard</a>

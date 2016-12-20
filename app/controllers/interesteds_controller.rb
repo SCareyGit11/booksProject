@@ -15,7 +15,7 @@ class InterestedsController < ApplicationController
   		read.destroy
   	end
 
-    current = Current.where(user_id: current_user.id, book_id:params[:book_id])[0].destroy
+    current = Current.where(user_id: current_user.id, book_id:params[:book_id])[0]
     if current
     	current.destroy
     end

@@ -1,8 +1,4 @@
-<form action='/sessions/<%=session[:user_id]%>' method='post'>
-<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-<input type="hidden" name="_method" value="delete">
-	<input type="submit" value="Log Out">
-</form>
+
 <h1><%=@book.title%></h1> 
 <p>by <%=@book.author%></p> 
 <p><%=@book.comments.count%> reviews</p>

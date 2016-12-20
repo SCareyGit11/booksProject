@@ -1,8 +1,4 @@
-<form action='/sessions/<%=session[:user_id]%>' method='post'>
-<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-<input type="hidden" name="_method" value="delete">
-	<input type="submit" value="Log Out">
-</form>
+
 
 <h1><%=current_user.first_name%></h1>
  <p>Here are the list of all the books</p>
@@ -20,9 +16,9 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr <%@books.each do |book|%>>
-			<td> <a href=""><%=book.title%></a> </td>
-			<td> <a href="/books/<%=book.id%>"><%=book.author%></a> </td>
+		<tr> <% @books.each do |book| %>
+			<td> <a href="/books/<%=book.id%>"><%=book.title%></a> </td>
+			<td> <a href=""><%=book.author%></a> </td>
 			<td> <a href="/users/<%=book.user_id%>"><%=book.user.first_name%></a> </td>
 			<td>number for now</td>
 			<td>

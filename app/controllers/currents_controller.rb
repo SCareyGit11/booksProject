@@ -25,6 +25,9 @@ class CurrentsController < ApplicationController
   end
 
   def destroy
-  	User.delete(params[:id])
+  	current = Current.find(params[:id])
+  	Read.create(user: current_user, book_id: params[:book_id])
+  	current.destroy
+  	redirect_to "/users/#{current_user.id}"
   end
 end
