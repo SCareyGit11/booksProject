@@ -11,7 +11,7 @@
 			<th>Title</th>
 			<th>Author</th>
 			<th>User who added the book to the list</th>
-			<th>No. of times book <br> has been added</th>
+			<th>No. of times book <br> has been added to the shelf</th>
 			<th>Add to Shelf</th>
 		</tr>
 	</thead>
@@ -20,7 +20,7 @@
 			<td> <a href="/books/<%=book.id%>"><%=book.title%></a> </td>
 			<td> <a href=""><%=book.author%></a> </td>
 			<td> <a href="/users/<%=book.user_id%>"><%=book.user.first_name%></a> </td>
-			<td>number for now</td>
+			<td><%=book.reads.count + book.currents.count + book.interesteds.count%></td>
 			<td>
 
 			<% unless Read.where(book_id: book.id, user_id: current_user.id).any? %>
