@@ -1,11 +1,12 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+
+
 
 <h1>Hello, <%=@user.first_name%></h1>
 
 <p><a href="/books/new">Add a Book</a></p>
 
 
+<<<<<<< HEAD
 <h3 id="read"> Books Read by <%=@user.first_name%></h3>
 <table>
 	<thead>
@@ -22,6 +23,20 @@
 		<%end%>
 	</tbody>
 </thead>
+=======
+<h3 id="read"> Books You've Read</h3>
+
+
+
+	<ul>
+		<% if current_user.reads %>
+			<%  current_user.books_read.each do |read| %>
+				<li><a href="/books/<%=read.id%>"><%=read.title%></a></li>
+				<li><%=read.author%></li>
+			<% end %>
+		<% end %>
+	</ul>
+>>>>>>> a7951e079fb1907d13cfab8c1c39264e2033f9fc
 
 
 <h3 id="interested"> Books <%=@user.first_name%> would Like to Read </h3>

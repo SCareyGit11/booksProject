@@ -5,7 +5,7 @@ class Book < ApplicationRecord
   has_many :currents
   has_many :users_current, through: :currents, source: :user
   has_many :interesteds
-  has_many :users_interested, through: :interested, source: :user
+  has_many :users_interested, through: :interesteds, source: :user
   has_many :comments
   has_many :users_commented, through: :comments, source: :user
   has_many :likes
