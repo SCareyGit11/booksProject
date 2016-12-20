@@ -25,9 +25,13 @@ Rails.application.routes.draw do
 
   get 'comments/show'
 
+  post 'comments' => 'comments#create'
+
   get 'sessions/new'
 
   post 'sessions' => 'sessions#create'
+
+  delete 'sessions/:id' => 'sessions#delete'
 
   get 'books/new'
 
@@ -36,6 +40,8 @@ Rails.application.routes.draw do
   get 'books' => 'books#index'
 
   post 'books' => 'books#create'
+
+  get 'books/:id' => 'books#show'
 
   get 'users/index'
 
@@ -46,6 +52,9 @@ Rails.application.routes.draw do
   get 'users/edit'
 
   post 'users' => 'users#create'
+
+  get 'users/:id' => 'users#show'
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

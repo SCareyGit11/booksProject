@@ -2,8 +2,11 @@ class BooksController < ApplicationController
   def new
   end
 
+
   def show
-  	Book.find(params[:id])
+  	@book = Book.find(params[:id])
+  	@user = User.find(session[:user_id])
+  	@comments = Comment.where(book_id:params[:id])
   end
 
   def index

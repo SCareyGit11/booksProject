@@ -1,2 +1,27 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<form action='/sessions/<%=session[:user_id]%>' method='post'>
+<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Log Out">
+</form>
+<h1><%=@book.title%></h1> 
+<p>by <%=@book.author%></p> 
+<p><%=@book.comments.count%> reviews</p>
+
+
+
+<form action='/comments' method='post'>
+<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	Review <input type="text" name="comment[review]"><br><br>
+	Rating <input type="text" name="comment[rating]"><br><br>
+	 <input type="hidden" name="user_id" value="<%=@user.id%>">
+	<input type="hidden" name="book_id" value="<%=@book.id%>">
+	<input type="submit" value="Submit Comments">
+</form>
+
+
+<h2>Discussion about the book</h2>
+
+<p> <%@comments.each do |comment|%> </p>
+<p><%=comment.user.first_name%> says <%=comment.review%></p>
+
+<p><%end%></p>
