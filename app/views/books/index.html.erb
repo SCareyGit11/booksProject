@@ -23,19 +23,31 @@
 		<tr <%@books.each do |book|%>>
 			<td> <a href=""><%=book.title%></a> </td>
 			<td> <a href="/books/<%=book.id%>"><%=book.author%></a> </td>
-			<td> <a href="/users/<%=session[:user_id]%>"><%=book.user.first_name%></a> </td>
+			<td> <a href="/users/<%=book.user_id%>"><%=book.user.first_name%></a> </td>
 			<td>number for now</td>
-			<td><form action='/currents' method='post'>
-			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-			<input type="hidden" name="book_id" value="<%=book.id%>">
-			<input type="hidden" name="user_id" value="<%=session[:id]%>">
-			<input type="submit" name="book[shelf]" value="Already read">
-
-	<input type="submit" name="book[shelf]" value="Currently reading">
-
-	<input type="submit" name="book[shelf]" value="Interested in reading">
+			<td>
+			<form action='/reads' method='post'>
+				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<input type="hidden" name="book_id" value="<%=book.id%>">
 				
-			</form></td>
+				<input type="submit" value="Already Read">
+			</form>
+
+			<form action='/currents' method='post'>
+				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<input type="hidden" name="book_id" value="<%=book.id%>">
+				
+				<input type="submit" value="Currently Reading">
+			</form>
+
+			<form action='/interesteds' method='post'>
+				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<input type="hidden" name="book_id" value="<%=book.id%>">
+				
+				<input type="submit" value="Interested in Reading">
+			</form>
+			</td>
+
 		</tr>
 		<%end%>
 	</tbody>

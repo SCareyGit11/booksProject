@@ -11,7 +11,7 @@
 <table>
 	<thead>
 		<th>Title</th><th>Author</th>
-	<thead>
+	</thead>
 	<tbody>
 		<%if @user.books_read %>
 		<% @user.books_read.each do |book| %>
@@ -22,13 +22,13 @@
 		<%end%>
 		<%end%>
 	</tbody>
-</thead>
+</table>
 
 <h3 id="interested"> Books <%=@user.first_name%> would Like to Read </h3>
 <table>
 	<thead>
-		<th>Title</th><th>Author</th>
-	<thead>
+		<th>Title</th><th>Author</th><th>			</th>
+	</thead>
 	<tbody>
 		<%if @user.books_interested %>
 		<% @user.books_interested.each do |book| %>
@@ -39,32 +39,44 @@
 		<%end%>
 		<%end%>
 	</tbody>
-</thead>
+</table>
 <h3 id="current"> Books <%=@user.first_name%> is currently Reading </h3>
 <table>
 	<thead>
-		<th>Title</th><th>Author</th>
-	<thead>
+		<th>Title</th><th>Author</th><th>			</th>
+	</thead>
 	<tbody>
-		<%if @user.books_interested %>
-		<% @user.books_interested.each do |book| %>
+		<%if @user.books_current %>
+		<% @user.books_current.each do |book| %>
 			<tr>
 				<td><a href="/books/<%=book.id%>"><%=book.title %></a></td>
 				<td><%=book.author %></td>
+
+				<!--Finished Book Button (For current_user's profile page only) Deletes book from current and adds to already read-->
+				<td><%if @user == current_user %>
+				<form action="/currents/<%=book.currents.first.id%>" method="post">
+					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+					<input type="hidden" name="_method" value="delete">
+					<input type="hidden" name="book_id" value="<%=book.id%>">
+					<input type="submit" value="Finished Reading">
+				</form>
+				<% end %></td>
 			</tr>
 		<%end%>
 		<%end%>
 	</tbody>
-</thead>
+</table>
+
+
 
 <h3 id="comments"> Books Reviewed by <%=@user.first_name%></h3>
 <table>
 	<thead>
 		<th>Title</th><th>Author</th>
-	<thead>
+	</thead>
 	<tbody>
-		<%if @user.books_interested %>
-		<% @user.books_interested.each do |book| %>
+		<%if @user.books_commented %>
+		<% @user.books_commented.each do |book| %>
 			<tr>
 				<td><a href="/books/<%=book.id%>"><%=book.title %></a></td>
 				<td><%=book.author %></td>
@@ -72,7 +84,9 @@
 		<%end%>
 		<%end%>
 	</tbody>
-</thead>
+</table>
 <a href="/users/<%=current_user.id%>">Edit your Profile</a>
 
 <a href="/users/new">Log Out</a>
+
+<a href="/books">Books Dashboard</a>

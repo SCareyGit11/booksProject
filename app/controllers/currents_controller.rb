@@ -7,4 +7,12 @@ class CurrentsController < ApplicationController
 
   def show
   end
+
+  def create
+  	current = Current.create(user: current_user, book_id: params[:book_id])
+  end
+
+  def destroy
+  	User.delete(params[:id])
+  end
 end

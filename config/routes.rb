@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'users#new'
+
   get 'likes/new'
 
   get 'interesteds/new'
@@ -7,11 +9,17 @@ Rails.application.routes.draw do
 
   get 'interesteds/show'
 
+  post 'interesteds' => 'interesteds#create'
+
   get 'currents/new'
 
   get 'currents/index'
 
   get 'currents/show'
+
+  post 'currents' => 'currents#create'
+
+  delete 'currents/:id' => 'currents#destroy'
 
   get 'reads/new'
 
@@ -19,6 +27,8 @@ Rails.application.routes.draw do
 
   get 'reads/show'
 
+  post 'reads' => 'reads#create'
+  
   get 'comments/new'
 
   get 'comments/index'

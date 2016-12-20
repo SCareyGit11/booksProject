@@ -7,4 +7,8 @@ class ReadsController < ApplicationController
 
   def show
   end
+
+  def create
+  	read = Read.create(user: current_user, book_id:params[:book_id])
+  end
 end

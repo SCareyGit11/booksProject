@@ -7,4 +7,8 @@ class InterestedsController < ApplicationController
 
   def show
   end
+
+  def create
+  	interested = Interested.create(user: current_user, book_id:params[:book_id])
+  end
 end
