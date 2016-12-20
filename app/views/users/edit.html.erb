@@ -1,2 +1,15 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h2>Edit your profile</h2>
+
+
+<form action='/users/<%=@user.id%>' method='post'>
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	<input type="hidden" name="_method" value='patch'>
+	<label>First Name <input type="text" name="user[first_name]" value="<%=@user.first_name%>"></label><br><br>
+	<label>Last Name <input type="text" name="user[last_name]" value="<%=@user.last_name%>"></label><br><br>
+	<label>Email <input type="text" name="user[email]" value="<%=@user.email%>"></label><br><br>
+	
+	<label>Password <input type="password" name="user[password]" value="<%=@user.password%>"></label><br><br>
+	
+	
+	<input type="submit" value="Update">
+</form>

@@ -11,7 +11,15 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
+    render 'edit'
   end
+
+  def update
+    @user = User.update(params[:id],first_name: params[:user][:first_name],last_name: params[:user][:last_name], email: params[:user][:email], password: params[:user][:password])
+    redirect_to "/users/" + @user.id.to_s
+  end
+
 
   def create
     
