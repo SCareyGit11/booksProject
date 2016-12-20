@@ -3,7 +3,7 @@
 
 <h1>Hello, <%=@user.first_name%></h1>
 
-<p><a href="/books">Add a Book</a></p>
+<p><a href="/books/new">Add a Book</a></p>
 
 
 <h3 id="read"> Books Read by <%=@user.first_name%></h3>
@@ -75,4 +75,4 @@
 </thead>
 <a href="/users/<%=current_user.id%>">Edit your Profile</a>
 
-<a href="/">Log Out</a>
+<a href="/users/new">Log Out</a>
