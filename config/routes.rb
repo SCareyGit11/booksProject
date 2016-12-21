@@ -37,6 +37,8 @@ Rails.application.routes.draw do
 
   post 'comments' => 'comments#create'
 
+  delete 'comments/:id' => 'comments#destroy'
+
   get 'sessions/new'
 
   post 'sessions' => 'sessions#create'

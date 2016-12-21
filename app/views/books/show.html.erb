@@ -39,9 +39,15 @@
 
 <h2>Discussion about the book</h2>
 
-<p> <%@comments.each do |comment|%> </p>
-<p><%=comment.user.first_name%> says, '<%=comment.review%>'</p>
-
-<%end%>
+<p><%@comments.each do |comment|%></p>
+	<p><%=comment.user.first_name%> says, '<%=comment.review%>'
+	<% if comment.user == current_user %>
+		<form action="/comments/<%=comment.id%>" method="post">
+			<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+			<input type="hidden" name="_method" value="delete">
+			<input type="submit" value="Delete">
+		</form></p>
+	<p><% end %></p>
+<p><%end%></p>
 
 <a href="/books">Books Dashboard</a>

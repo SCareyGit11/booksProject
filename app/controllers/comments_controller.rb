@@ -12,4 +12,11 @@ class CommentsController < ApplicationController
   	@comment = Comment.create(review: params[:comment][:review], rating: params[:comment][:rating], user_id: params[:user_id],book_id: params[:book_id])
   	redirect_to "/books/" + params[:book_id].to_s
   end
+
+  def destroy
+    comment = Comment.find(params[:id])
+    redirect_to "/books/#{comment.book_id}"
+    comment.destroy
+
+  end
 end
