@@ -56,6 +56,21 @@
 
 			</td>
 
+			<td>
+				<% if book.comments.count > 0 %>
+					<h4>Average Rating</h4>
+					<% book.comments.each do |comment| %>
+					<% if comment.rating %>
+						<%sum+=comment.rating%>
+					<% end %>
+				<%end%>
+				<h4><%=sum/book.comments.count%></h4>
+				<% else %>
+					<h4>This book is not yet Rated</h4>
+
+				<%end%>
+			</td>
+
 		</tr>
 		<%end%>
 	</tbody>
