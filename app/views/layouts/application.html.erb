@@ -10,12 +10,23 @@
 
   <body>
   	<% if current_user %>
-  		<a href="/users/<%=current_user.id%>">My Books</a>
-  		<form action='/sessions/<%=session[:user_id]%>' method='post'>
-			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-			<input type="hidden" name="_method" value="delete">
-			<input type="submit" value="Log Out">
-		</form>
+
+    <div class='nav'>
+
+      <a href="/books">Home</a>
+        <a href="/users/<%=current_user.id%>">My Books</a>
+        <a href="/users/<%=current_user.id%>/edit">Edit your Profile</a>
+
+        <form id='logout' action='/sessions/<%=session[:user_id]%>' method='post'>
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Log Out" >
+      </form>
+      
+    </div>
+      
+
+
   	<% end %>
     <%= yield %>
   </body>

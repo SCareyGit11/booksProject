@@ -13,3 +13,35 @@
  *= require_tree .
  *= require_self
  */
+
+
+.nav
+{
+	background-color: lightgrey;
+	height: 50px;
+	width:98%;
+	padding:20px;
+
+}
+
+a
+{
+	text-decoration: none;
+	margin:10px;
+	/*padding:10px;*/
+	/*padding-top:50px;*/
+}
+
+#logout{
+	text-align: right;
+	padding-bottom:55px;
+	padding-right:10px;
+	padding-top: -20px;
+}
+
+table, th, td {
+   border: 1px solid transparent;
+   margin:10px;
+   padding:10px;
+
+}
