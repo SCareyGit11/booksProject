@@ -34,6 +34,7 @@
 }
 a
 {
+	color:green;
 	text-decoration: none;
 	margin:10px;
 	/*padding:10px;*/
@@ -62,3 +63,19 @@ img{
 	text-align: right;
 	margin:10px;
 }
+
+.books
+{
+	color:green;
+}
+
+a
+{
+
+}
+
+th
+{
+	color:brown;
+}
+

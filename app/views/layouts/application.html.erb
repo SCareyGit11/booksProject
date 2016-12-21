@@ -16,6 +16,7 @@
       <a href="/books">Home</a>
         <a href="/users/<%=current_user.id%>">My Books</a>
         <a href="/users/<%=current_user.id%>/edit">Edit your Profile</a>
+        <a href="/books/new">Create a new book in the database</a>
 
 
         <form id='logout' action='/sessions/<%=session[:user_id]%>' method='post'>
