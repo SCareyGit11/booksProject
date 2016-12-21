@@ -69,8 +69,8 @@ img{
 	vertical-align: top;
 	margin:20px;
 	margin-left:350px;
-
 	
+	width:600px;
 }
 
 .category
@@ -81,6 +81,7 @@ img{
 .discussion_title
 {
 	color:brown;
+
 }
 
 .review_form
@@ -89,6 +90,8 @@ img{
 	margin:20px;
 	margin-right:30px;
 	margin-left:140px;
+	width:600px;
+	
 
 }
 
