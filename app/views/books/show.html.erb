@@ -8,16 +8,40 @@
 <form action='/comments' method='post'>
 <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 	Review <input type="text" name="comment[review]"><br><br>
-	Rating <input type="text" name="comment[rating]"><br><br>
+	Rating <input type="number" name="comment[rating]" min="1" max="5" placeholder="1"><br><br>
 	 <input type="hidden" name="user_id" value="<%=@user.id%>">
 	<input type="hidden" name="book_id" value="<%=@book.id%>">
 	<input type="submit" value="Submit Comments">
 </form>
 
 
+<% sum=0 %>
+
+<% if @book.comments.count > 0 %>
+	<h4>Average Rating</h4>
+	<% @book.comments.each do |comment| %>
+		<% if comment.rating %>
+			<%sum+=comment.rating%>
+		<% end %>
+	<%end%>
+	<h4><%=sum/@book.comments.count%></h4>
+<% else %>
+	<h4>This book is not yet Rated</h4>
+
+<%end%>
+
+<h4>Who's reading this book Now?</h4>
+	<ul>
+	<% @book.users_current.each do |user| %>
+	<li><a href="/users/<%=user.id%>"><%=user.first_name%></a></li>
+	<% end %>
+	</ul>
+
 <h2>Discussion about the book</h2>
 
 <p> <%@comments.each do |comment|%> </p>
-<p><%=comment.user.first_name%> says <%=comment.review%></p>
+<p><%=comment.user.first_name%> says, '<%=comment.review%>'</p>
 
-<p><%end%></p>
+<%end%>
+
+<a href="/books">Books Dashboard</a>
