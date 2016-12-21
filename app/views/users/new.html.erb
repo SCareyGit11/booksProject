@@ -1,32 +1,52 @@
-<h2>Register</h2>
+<body>
+<div id="container">
+	<div id="top">
+	<h1 class='title'>book<span style="color:red">Room </span> </h1>
+		<form action='/sessions' method='post'>
+		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+			<label><input type="text" name="email" placeholder="Email"></label>
+			<label><input type="password" name="password" Placeholder="Password"></label>
+			<input type="submit" value="Sign In">
+		</form>
 
-<form action='/users' method='post'>
-	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-	<label>First Name <input type="text" name="user[first_name]"></label><br><br>
-	<label>Last Name <input type="text" name="user[last_name]"></label><br><br>
-	<label>Email <input type="text" name="user[email]"></label><br><br>
+		<h2 id='sign'>New here? Create a free account!</h2>
+
+		<form action='/users' method='post'>
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+			<label><input type="text" name="user[first_name]" placeholder="First Name"></label><br><br>
+			<label><input type="text" name="user[last_name]" placeholder="Last Name"></label><br><br>
+			<label><input type="text" name="user[email]" placeholder="Email"></label><br><br>
+			
+			
+			<label><input type="password" name="user[password]" placeholder="Password"></label><br><br>
+			
+
+			<input type="submit" value="Sign Up">
+		</form>
+
+		<% if flash[:success] %>
+			<p><%=flash[:success]%></p>
+		<%end%>
+		<br><br>
+
+
+
+
+		<%if flash[:errors]%>
+			<p><%=flash[:errors]%></p> 
+		<% end %>
 	
+</div><!-- end of top -->
+
+	<div id="bottom">
+		<h1 id='meet'>Meet your next favorite book.</h1>
+		
+	</div><!-- end of bottom -->
+
+		
+	</div>
 	
-	<label>Password <input type="password" name="user[password]"></label><br><br>
-	
-
-	<input type="submit" value="Register">
-</form>
-
-<% if flash[:success] %>
-	<p><%=flash[:success]%></p>
-<%end%>
-<br><br>
-
-<h2>Log In</h2>
-<form action='/sessions' method='post'>
-<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-	<label>Email <input type="text" name="email"></label><br><br>
-	<label>Password <input type="password" name="password"></label><br><br>
-	<input type="submit" value="Log In">
-</form>
+<!-- end of container -->
 
 
-<%if flash[:errors]%>
-	<p><%=flash[:errors]%></p> 
-<% end %>
+</body>
