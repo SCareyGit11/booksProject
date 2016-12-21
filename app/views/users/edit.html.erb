@@ -6,14 +6,14 @@
 	<form action='/users/<%=@user.id%>' method='post'>
 		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 		<input type="hidden" name="_method" value='patch'>
-		<label>First Name <input type="text" name="user[first_name]" value="<%=@user.first_name%>"></label><br><br>
-		<label>Last Name <input type="text" name="user[last_name]" value="<%=@user.last_name%>"></label><br><br>
-		<label>Email <input type="text" name="user[email]" value="<%=@user.email%>"></label><br><br>
+		<label>First Name <input type="text" name="user[first_name]" value="<%=@user.first_name%>" class='my_text'></label><br><br>
+		<label>Last Name <input type="text" name="user[last_name]" value="<%=@user.last_name%>" class='my_text'></label><br><br>
+		<label>Email <input type="text" name="user[email]" value="<%=@user.email%>" class='my_text'></label><br><br>
 		
-		<label>Password <input type="password" name="user[password]" value="<%=@user.password%>"></label><br><br>
+		<label>Password <input type="password" name="user[password]" value="<%=@user.password%>" class='my_text'></label><br><br>
 		
 		
-		<input type="submit" value="Update">
+		<input type="submit" value="Update" class='my_text'>
 	</form>
 	
 </div>
