@@ -14,6 +14,13 @@
  *= require_self
  */
 
+.container_user_show
+{
+	
+	width: 800px;
+     margin: 0 auto;
+     padding:50px;
+}
 
 .nav
 {
