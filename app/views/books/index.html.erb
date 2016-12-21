@@ -1,7 +1,7 @@
 
 
 
- <p>Here are the list of all the books</p>
+ <h2>Books</h2>
 
 
 
@@ -10,9 +10,10 @@
 		<tr>
 			<th>Title</th>
 			<th>Author</th>
-			<th>User who added the book to the list</th>
+			<th>Creator</th>
 			<th>No. of times book <br> has been added to the shelf</th>
 			<th>Add to Shelf</th>
+			<th>Average Rating</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -57,16 +58,17 @@
 			</td>
 
 			<td>
+				<%sum=0%>
 				<% if book.comments.count > 0 %>
-					<h4>Average Rating</h4>
+					
 					<% book.comments.each do |comment| %>
 					<% if comment.rating %>
 						<%sum+=comment.rating%>
 					<% end %>
 				<%end%>
-				<h4><%=sum/book.comments.count%></h4>
+				<p class='rating'><%=sum/book.comments.count%></p>
 				<% else %>
-					<h4>This book is not yet Rated</h4>
+					<p>This book is not yet Rated</p>
 
 				<%end%>
 			</td>
