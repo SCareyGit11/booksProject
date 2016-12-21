@@ -11,6 +11,6 @@ class Book < ApplicationRecord
   has_many :likes
   has_many :users_liked, through: :likes, source: :user
 
-  validates :title, length: {in: 2..20}
+  validates :title, length: {in: 2..50}
   validates :author, length: {in: 2..20}
 end
