@@ -45,3 +45,12 @@ table, th, td {
    padding:10px;
 
 }
+img{
+	margin:5px;
+}
+
+.user
+{
+	text-align: right;
+	margin:10px;
+}
