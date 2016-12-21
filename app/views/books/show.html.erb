@@ -1,56 +1,81 @@
+<div class='book_show_container'>
 
-<h1><%=@book.title%></h1> 
-<p>by <%=@book.author%></p> 
+	<div class='review_form'>
 
-<p><%=@book.category%></p>
-<p><%=@book.description%></p>
-<p><%=@book.comments.count%> reviews</p>
+		<h1 class='book_title'><%=@book.title%></h1> 
+		<p>:by <em><%=@book.author%></em> </p> 
 
-
-
-<form action='/comments' method='post'>
-<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-	<textarea name="comment[review]" placeholder="Write your review" rows="7" cols="30"></textarea><br><br>
-	<input type="number" name="comment[rating]" min="1" max="5" placeholder="1"> Rate this book<br><br>
-	 <input type="hidden" name="user_id" value="<%=@user.id%>">
-	<input type="hidden" name="book_id" value="<%=@book.id%>">
-	<input type="submit" value="Submit Comments">
-</form>
+		<p class='category'><%=@book.category%></p>
+		<p><%=@book.description%></p>
+		
 
 
-<% sum=0 %>
 
-<% if @book.comments.count > 0 %>
-	<h4>Average Rating</h4>
-	<% @book.comments.each do |comment| %>
-		<% if comment.rating %>
-			<%sum+=comment.rating%>
-		<% end %>
-	<%end%>
-	<h4><%=sum/@book.comments.count%></h4>
-<% else %>
-	<h4>This book is not yet Rated</h4>
+	
 
-<%end%>
 
-<h4>Who's reading this book Now?</h4>
-	<ul>
-	<% @book.users_current.each do |user| %>
-	<li><a href="/users/<%=user.id%>"><%=user.first_name%></a></li>
-	<% end %>
-	</ul>
+		<% sum=0 %>
 
-<h2>Discussion about the book</h2>
+		<% if @book.comments.count > 0 %>
+			<p> <b>Avg. Rating:  </b> 
+			<% @book.comments.each do |comment| %>
+				<% if comment.rating %>
+					<%sum+=comment.rating%>
+				<% end %>
+			<%end%>
+			<%=sum/@book.comments.count%>,
+			<em>
+				<%=@book.comments.count%> reviews
+			</em>
+			
+			</p>
+		<% else %>
+			<h4>This book is not yet Rated</h4>
 
-<p><%@comments.each do |comment|%></p>
-	<p><%=comment.user.first_name%> says, '<%=comment.review%>'
-	<% if comment.user == current_user %>
-		<form action="/comments/<%=comment.id%>" method="post">
-			<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-			<input type="hidden" name="_method" value="delete">
-			<input type="submit" value="Delete">
-		</form></p>
-	<p><% end %></p>
-<p><%end%></p>
+		<%end%>
 
-<a href="/books">Books Dashboard</a>
+		<h4>Who's reading this book Now?</h4>
+			<ul>
+			<% @book.users_current.each do |user| %>
+			<li><a href="/users/<%=user.id%>"><%=user.first_name%></a></li>
+			<% end %>
+			</ul>
+
+
+				<form action='/comments' method='post'>
+		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+			<textarea name="comment[review]" placeholder="Write your review" rows="7" cols="30"></textarea><br><br>
+			<input type="number" name="comment[rating]" min="1" max="5" placeholder="1"> Rate this book<br><br>
+			 <input type="hidden" name="user_id" value="<%=@user.id%>">
+			<input type="hidden" name="book_id" value="<%=@book.id%>">
+			<input type="submit" value="Submit Comments">
+		</form>
+		
+	</div>
+	<!-- end of review_form -->
+
+
+	<div class='discussion'>
+		<h2 class='discussion_title'>Discussion about the book</h2>
+		<hr>
+
+		<p><%@comments.each do |comment|%></p>
+			<p><%=comment.user.first_name%> says, '<%=comment.review%>'
+			<% if comment.user == current_user %>
+				<form action="/comments/<%=comment.id%>" method="post">
+					<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+					<input type="hidden" name="_method" value="delete">
+					<input type="submit" value="Delete">
+				</form></p>
+			<p><% end %></p>
+		<p><%end%></p>
+
+
+		
+	</div>
+	<!-- end of discussion -->
+
+
+	
+</div>
+<!-- end of container -->
